@@ -90,6 +90,18 @@ namespace MyNamespace{
             cars[cars.Length - 1] = car;
         }
 
+        public void AddCar(string brand, string model, int year, double engineCapacity)
+        {
+            Car car = new Car(brand, model, year, engineCapacity);
+            AddCar(car);
+        }
+
+        public void AddCar(string brand, string model, int year, double engineCapacity, double batteryCapacity)
+        {
+            Electric car = new Electric(brand, model, year, engineCapacity, batteryCapacity);
+            AddCar(car);
+        }
+
         // метод удаления автомобиля из каталога по индексу
         public void RemoveCar(int index)
         {
