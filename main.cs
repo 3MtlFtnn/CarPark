@@ -38,8 +38,39 @@ namespace MyNamespace{
         }
         public override string ToString()
         {
-            return $"Марка: {Brand}, Модель: {Model}, Год выпуска: {Year}, Объем двигателя: {EngineCapacity} л";
+            if (EngineCapacity > 0)
+            {
+                return $"Марка: {Brand}, Модель: {Model}, Год выпуска: {Year}, Объем двигателя: {EngineCapacity} л";
+            }
+            else
+            {
+                return "";
+            }
         }
+    }
+    class Electric:Car
+    {
+        public double BatteryCapacity { get; set; }
+        public Electric(string brand, string model, int year, double engineCapacity, double batteryCapacity)
+            : base(brand,model,year,engineCapacity)
+        {
+            if (EngineCapacity == 0)
+            {
+                BatteryCapacity = batteryCapacity;
+            }
+        }
+        public override string ToString()
+        {
+            if (EngineCapacity == 0)
+            {
+                return $"Марка: {Brand}, Модель: {Model}, Год выпуска: {Year}, Ёмкость батареи: {BatteryCapacity} W";
+            }
+            else
+            {
+                return base.ToString();
+            }
+        }
+        
     }
     class Catalog
     {
@@ -125,7 +156,16 @@ namespace MyNamespace{
                     int year = Int32.Parse(Console.ReadLine());
                     Console.Write("Объем двигателя: ");
                     double engineCapacity = Double.Parse(Console.ReadLine());
-                    catalog.AddCar(new Car(brand, model, year, engineCapacity));
+                    if (engineCapacity == 0)
+                    {
+                        Console.Write("Ёмкость батареи: ");
+                        double batteryCapacity = Double.Parse(Console.ReadLine());
+                        catalog.AddCar(new Electric(brand, model, year, engineCapacity, batteryCapacity));
+                    }
+                    else
+                    {
+                        catalog.AddCar(new Car(brand, model, year, engineCapacity));
+                    }
                     Console.WriteLine("Автомобиль успешно добавлен!");
                 }},
                 new MenuItem { Title = "Удалить автомобиль", Handler = () => {
