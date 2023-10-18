@@ -1,7 +1,8 @@
 using System;
 using System.Text.RegularExpressions;
-namespace MyNamespace{
-    class Car
+namespace CarPark
+{
+    public class Car
     {
         public string Brand { get; set; } // марка автомобиля
         public string Model { get; set; } // модель автомобиля
@@ -13,23 +14,23 @@ namespace MyNamespace{
         {
             if (!Regex.IsMatch(year.ToString(), @"^19\d{2}|20[01]\d|202[0-9]$"))
             {
-                throw new ArgumentOutOfRangeException(nameof(year), "Год выпуска автомобиля должен быть в пределах от 1900 до текущего года");
+                throw new ArgumentOutOfRangeException(nameof(year), "Year must be from 1900 to latest year");
             }
             if (year < 1900 || year > DateTime.Now.Year)
             {
-                throw new ArgumentOutOfRangeException(nameof(year), "Год выпуска автомобиля должен быть в пределах от 1900 до текущего года");
+                throw new ArgumentOutOfRangeException(nameof(year), "Year must be from 1900 to latest year");
             }
             if (string.IsNullOrWhiteSpace(brand))
             {
-                throw new ArgumentException("Марка автомобиля не может быть пустой или состоять только из пробелов", nameof(brand));
+                throw new ArgumentException("Mark cant be empty", nameof(brand));
             }
             if (engineCapacity < 0)
             {
-                throw new ArgumentOutOfRangeException(nameof(engineCapacity), "Объем двигателя автомобиля должен быть положительным числом");
+                throw new ArgumentOutOfRangeException(nameof(engineCapacity), "Engine compasity must be positive");
             }
             if (string.IsNullOrWhiteSpace(model))
             {
-                throw new ArgumentException("Модель автомобиля не может быть пустой или состоять только из пробелов", nameof(model));
+                throw new ArgumentException("Model cant be empty", nameof(model));
             }
             this.Brand = brand;
             this.Model = model;
@@ -40,7 +41,7 @@ namespace MyNamespace{
         {
             if (EngineCapacity > 0)
             {
-                return $"Марка: {Brand}, Модель: {Model}, Год выпуска: {Year}, Объем двигателя: {EngineCapacity} л";
+                return $"Mark: {Brand}, Model: {Model}, Year: {Year}, Engine: {EngineCapacity} l";
             }
             else
             {
@@ -48,11 +49,11 @@ namespace MyNamespace{
             }
         }
     }
-    class Electric:Car
+    class Electric : Car
     {
         public double BatteryCapacity { get; set; }
         public Electric(string brand, string model, int year, double engineCapacity, double batteryCapacity)
-            : base(brand,model,year,engineCapacity)
+            : base(brand, model, year, engineCapacity)
         {
             if (EngineCapacity == 0)
             {
@@ -63,14 +64,14 @@ namespace MyNamespace{
         {
             if (EngineCapacity == 0)
             {
-                return $"Марка: {Brand}, Модель: {Model}, Год выпуска: {Year}, Ёмкость батареи: {BatteryCapacity} W";
+                return $"Mark: {Brand}, Model: {Model},  Year: {Year}, Battery: {BatteryCapacity} W";
             }
             else
             {
                 return base.ToString();
             }
         }
-        
+
     }
     class Catalog
     {
@@ -129,17 +130,17 @@ namespace MyNamespace{
         {
             if (cars.Length == 0)
             {
-                Console.WriteLine("Каталог пуст!");
+                Console.WriteLine("Catalog empty!");
             }
             else
             {
-                Console.WriteLine("Автомобили в каталоге:");
+                Console.WriteLine("Cars in catalog:");
                 for (int i = 0; i < cars.Length; i++)
                 {
                     Console.WriteLine($"{i + 1}. {cars[i]}");
                 }
             }
-        return cars.Length;
+            return cars.Length;
         }
     }
     struct MenuItem
@@ -147,7 +148,8 @@ namespace MyNamespace{
         public string Title;
         public Action Handler;
     }
-    class Program{
+    class CarPark
+    {
 
         static void Main(string[] args)
         {
@@ -159,18 +161,18 @@ namespace MyNamespace{
             // массив пунктов меню
             MenuItem[] menuItems = new MenuItem[]
             {
-                new MenuItem { Title = "Добавить автомобиль", Handler = () => {
-                    Console.Write("Марка: ");
+                new MenuItem { Title = "Add car", Handler = () => {
+                    Console.Write("Mark: ");
                     string brand = Console.ReadLine();
-                    Console.Write("Модель: ");
+                    Console.Write("Model: ");
                     string model = Console.ReadLine();
-                    Console.Write("Год выпуска: ");
+                    Console.Write("Year: ");
                     int year = Int32.Parse(Console.ReadLine());
-                    Console.Write("Объем двигателя: ");
+                    Console.Write("Engine compasity: ");
                     double engineCapacity = Double.Parse(Console.ReadLine());
                     if (engineCapacity == 0)
                     {
-                        Console.Write("Ёмкость батареи: ");
+                        Console.Write("Battery compasity: ");
                         double batteryCapacity = Double.Parse(Console.ReadLine());
                         catalog.AddCar(new Electric(brand, model, year, engineCapacity, batteryCapacity));
                     }
@@ -178,60 +180,75 @@ namespace MyNamespace{
                     {
                         catalog.AddCar(new Car(brand, model, year, engineCapacity));
                     }
-                    Console.WriteLine("Автомобиль успешно добавлен!");
+                    Console.WriteLine("Car added secsesfull!");
                 }},
-                new MenuItem { Title = "Удалить автомобиль", Handler = () => {
+                new MenuItem { Title = "Delete", Handler = () => {
                     if (catalog.PrintCatalog() == 0)
                     {
-                        Console.WriteLine("Каталог пуст!");
+                        Console.WriteLine("Empty catalog!");
                     }
                     else
                     {
-                        Console.Write("Введите номер автомобиля, который нужно удалить: ");
+                        Console.Write("Enter number car: ");
                         int index = Int32.Parse(Console.ReadLine()) - 1;
                         catalog.RemoveCar(index);
-                        Console.WriteLine("Автомобиль удален!");
+                        Console.WriteLine("Car deleted!");
                     }
                 }},
-                new MenuItem { Title = "Изменить данные об автомобиле", Handler = () => {
+                new MenuItem { Title = "Edit information car", Handler = () => {
                     if (catalog.PrintCatalog() == 0)
                     {
-                        Console.WriteLine("Каталог пуст!");
+                        Console.WriteLine("Empty catalog!");
                     }
                     else
                     {
-                        Console.Write("Введите номер автомобиля, данные которого нужно изменить: ");
+                        Console.Write("Enter number of car: ");
                         int index = Int32.Parse(Console.ReadLine()) - 1;
-                        Console.Write("Марка: ");
+                        Console.Write("Mark: ");
                         string brand = Console.ReadLine();
-                        Console.Write("Модель: ");
+                        Console.Write("Model: ");
                         string model = Console.ReadLine();
-                        Console.Write("Год выпуска: ");
+                        Console.Write("Year: ");
                         int year = Int32.Parse(Console.ReadLine());
-                        Console.Write("Объем двигателя: ");
+                        Console.Write("Engine compasity: ");
                         double engineCapacity = Double.Parse(Console.ReadLine());
                         catalog.EditCar(index, new Car(brand, model, year, engineCapacity));
-                        Console.WriteLine("Данные об автомобиле успешно изменены!");
+                        Console.WriteLine("Information of cars edited!");
                     }
                 }},
-                new MenuItem { Title = "Показать все автомобили", Handler = () => {
-                    if (catalog.PrintCatalog() == 0)
-                    {
-                        Console.WriteLine("Каталог пуст!");
-                    }
+                new MenuItem { Title = "Run Test", Handler = () =>
+                {
+                    try{
+                        Console.WriteLine("Mark: ");
+                        string brand = Console.ReadLine();
+                        Console.WriteLine("Model: ");
+                        string model = Console.ReadLine();
+                        Console.WriteLine("Year: ");
+                        int year = Int32.Parse(Console.ReadLine());
+                        Console.Write("Engine capacity: ");
+                        double engineCapacity = Double.Parse(Console.ReadLine());
+                        if(engineCapacity==0)
+                        {
+                            Console.WriteLine("Batterey Capacity: ");
+                            double batteryCapacity = Double.Parse(Console.ReadLine());
+                            catalog.AddCar(new Electric(brand, model, year, engineCapacity, batteryCapacity));
+                        }
+                        else
+                        {
+                            catalog.AddCar(new Car(brand, model, year, engineCapacity));=
                 }},
-                new MenuItem { Title = "Выход", Handler = () => Environment.Exit(0) }
+                new MenuItem { Title = "Exit", Handler = () => Environment.Exit(0) }
             };
 
             // цикл вывода меню и обработки выбранных пунктов
             while (true)
             {
-                Console.WriteLine("Меню:");
+                Console.WriteLine("Menu:");
                 for (int i = 0; i < menuItems.Length; i++)
                 {
                     Console.WriteLine($"{i + 1}. {menuItems[i].Title}");
                 }
-                Console.Write("Выберите пункт меню: ");
+                Console.Write("Enter number: ");
                 int choice = Int32.Parse(Console.ReadLine()) - 1;
                 if (choice >= 0 && choice < menuItems.Length)
                 {
@@ -239,7 +256,7 @@ namespace MyNamespace{
                 }
                 else
                 {
-                    Console.WriteLine("Некорректный выбор!");
+                    Console.WriteLine("Please try again!");
                 }
                 Console.WriteLine();
             }
