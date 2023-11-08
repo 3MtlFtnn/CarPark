@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="1200px-Mercedes-Benz_SLS_AMG_%28C_197%29_–_Frontansicht_geöffnet,_10._August_2011,_Düsseldorf.jpg" />
+    <None Remove="71LoX1n26-L._AC_UF1000,1000_QL80_.jpg" />
+    <None Remove="audi_100_552488.jpg" />
+    <None Remove="bmw-m4-gts-ol065.jpg" />
+    <None Remove="Images\959.jpg" />
+    <None Remove="porsche-911-993-turbo-1920x774px.jpg" />
+    <None Remove="willian-justen-de-vasconcellos-7kCNXfo35aU-unsplash.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\959.jpg" />
+  </ItemGroup>
+
+</Project>

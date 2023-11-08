@@ -1,0 +1,14 @@
+﻿<Window x:Class="CarApp.Auth"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Authentication Sample" Height="250" Width="350">
+    <Grid>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock Text="Username" FontSize="16" />
+            <TextBox x:Name="usernameTextBox" Width="200" Height="30" FontSize="16" />
+            <TextBlock Text="Password" FontSize="16" Margin="0,10,0,0" />
+            <PasswordBox x:Name="passwordBox" Width="200" Height="30" FontSize="16" />
+            <Button x:Name="Login" Content="Login" Width="100" Height="30" FontSize="16" Margin="0,20,0,0" Click="Button_Click" />
+        </StackPanel>
+    </Grid>
+</Window>
