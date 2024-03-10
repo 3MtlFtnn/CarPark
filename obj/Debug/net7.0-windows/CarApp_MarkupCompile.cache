@@ -4,7 +4,7 @@
 winexe
 C#
 .cs
-C:\Users\maxim\Downloads\CarApp111\CarApp\obj\Debug\net7.0-windows\
+C:\Users\maxim\Programming\C#\CarPark\obj\Debug\net7.0-windows\
 CarApp
 none
 false
@@ -12,7 +12,7 @@ TRACE;DEBUG;NET;NET7_0;NETCOREAPP
 
 7-1957426589
 
-8-1028255228
+9-964534811
 198-306949569
 AddCarWindow.xaml;AllCar.xaml;Auth.xaml;CarView.xaml;Image.xaml;MainWindow.xaml;Window2.xaml;
 

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "QkE7AhHNy+OF7MZciDt5g0mFRSk/i1CBqnfDex75J0/HecVEaW4tDIJbR4o3M+YLxY9Sn8SB7C31mEEqIiT4sA==",
+  "dgSpecHash": "ZpAXztoet77ecudl3Q+MGG/GRjGsah3Ih+fzdbiA3lls7imcoDYrGp2sC/I9bXgWcIv4qG8BvrvsVB4juj5cKQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\maxim\\Downloads\\CarApp111\\CarApp\\CarApp.csproj",
+  "projectFilePath": "C:\\Users\\maxim\\Programming\\C#\\CarPark\\CarApp.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

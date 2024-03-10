@@ -61,7 +61,7 @@ namespace CarApp {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/CarApp;V1.0.0.0;component/allcar.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/CarApp;component/allcar.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\AllCar.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

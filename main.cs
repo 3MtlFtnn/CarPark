@@ -1,3 +1,4 @@
+/*
 using System;
 using System.Text.RegularExpressions;
 namespace CarPark
@@ -218,27 +219,35 @@ namespace CarPark
                 }},
                 new MenuItem { Title = "Run Test", Handler = () =>
                 {
-                    try{
+                    try
+                    {
                         Console.WriteLine("Mark: ");
                         string brand = Console.ReadLine();
                         Console.WriteLine("Model: ");
                         string model = Console.ReadLine();
                         Console.WriteLine("Year: ");
                         int year = Int32.Parse(Console.ReadLine());
-                        Console.Write("Engine capacity: ");
+                        Console.WriteLine("Engine capacity: ");
                         double engineCapacity = Double.Parse(Console.ReadLine());
-                        if(engineCapacity==0)
+                        if (engineCapacity == 0)
                         {
-                            Console.WriteLine("Batterey Capacity: ");
+                            Console.WriteLine("Battery Capacity: ");
                             double batteryCapacity = Double.Parse(Console.ReadLine());
                             catalog.AddCar(new Electric(brand, model, year, engineCapacity, batteryCapacity));
                         }
                         else
                         {
-                            catalog.AddCar(new Car(brand, model, year, engineCapacity));=
+                            catalog.AddCar(new Car(brand, model, year, engineCapacity));
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Error: " + ex.Message);
+                    }
                 }},
                 new MenuItem { Title = "Exit", Handler = () => Environment.Exit(0) }
-            };
+                };
+
 
             // цикл вывода меню и обработки выбранных пунктов
             while (true)
@@ -263,3 +272,4 @@ namespace CarPark
         }
     }
 }
+*/

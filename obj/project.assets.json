@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\maxim\\Downloads\\CarApp111\\CarApp\\CarApp.csproj",
+      "projectUniqueName": "C:\\Users\\maxim\\Programming\\C#\\CarPark\\CarApp.csproj",
       "projectName": "CarApp",
-      "projectPath": "C:\\Users\\maxim\\Downloads\\CarApp111\\CarApp\\CarApp.csproj",
+      "projectPath": "C:\\Users\\maxim\\Programming\\C#\\CarPark\\CarApp.csproj",
       "packagesPath": "C:\\Users\\maxim\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\maxim\\Downloads\\CarApp111\\CarApp\\obj\\",
+      "outputPath": "C:\\Users\\maxim\\Programming\\C#\\CarPark\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
